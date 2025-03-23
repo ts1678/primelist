@@ -12,7 +12,7 @@ uint64_t mpow(unsigned __int128 base, uint64_t exponent, const uint64_t modulus)
 
 	while(exponent > 0){
     	if(exponent % 2 == 1){
-        	result = (base * x) % modulus;
+        	result = (base * result) % modulus;
         	--exponent;
     	} else{
         	base = (base * base) % modulus;
