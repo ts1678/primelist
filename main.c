@@ -10,11 +10,11 @@ uint64_t mpow(unsigned __int128 base, uint64_t exponent, const uint64_t modulus)
 
 	unsigned __int128 result = 1;
 
-	while(exponent > 0){
-    	if(exponent % 2 == 1){
+	while(exponent > 0) {
+    	if(exponent % 2 == 1) {
         	result = (base * result) % modulus;
         	--exponent;
-    	} else{
+    	} else {
         	base = (base * base) % modulus;
         	exponent /= 2;
     	}
@@ -24,8 +24,14 @@ uint64_t mpow(unsigned __int128 base, uint64_t exponent, const uint64_t modulus)
 
 }
 
+_Bool simpleExponent (const uint64_t n) {
 
-_Bool trialDivision(const uint64_t n) {
+    return (mpow(n, 2, 24) == 1);
+
+}
+
+
+_Bool trialDivision (const uint64_t n) {
 
     for (uint8_t i = 0; i < sizeof(smallPrimes) / sizeof(smallPrimes[0]); ++i) {
         if (n % smallPrimes[i] == 0) {
@@ -39,11 +45,11 @@ _Bool trialDivision(const uint64_t n) {
 
 _Bool fermat(const uint64_t n) {
 
-    if (mpow(2, n - 1, n) != 1){
+    if (mpow(2, n - 1, n) != 1) {
             return 0;
     }
 
-    if (mpow(3, n - 1, n) != 1){
+    if (mpow(3, n - 1, n) != 1) {
             return 0;
     }
 
@@ -87,10 +93,12 @@ _Bool millerRabin(const uint64_t n) {
 
 _Bool test(const uint64_t n) {
 
-    if (trialDivision(n)) {
-        if (fermat(n)) {
-            if (millerRabin(n)) {
-                return 1;
+    if (simpleExponent(n)) {
+        if (trialDivision(n)) {
+            if (fermat(n)) {
+                if (millerRabin(n)) {
+                    return 1;
+                }
             }
         }
     }
