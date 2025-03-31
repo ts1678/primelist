@@ -13,9 +13,7 @@ requires a 64 bit system
 
 mpow(base, exponeent, modulus): returns base ^ exponent % modulus
 
-simpleExponent(n): returns true if n^2%24=1, which is true for all primes
-
-trialDivision(n): returns true if n is not divisable by primes up to 100 prime factors us to 100
+trialDivision(n): returns true if n is not divisable by primes up to 100 prime factors up to 100
 
 fermat(n): tests n with fermat bases 2 and 3. Returns true if still probably prime
 
