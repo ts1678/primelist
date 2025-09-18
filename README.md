@@ -6,7 +6,7 @@ reccomended to use -std=c99 -m64 -O3
 
 should work up to 2^64 =~ 1.84 x 10^19
 
-requires a 64 bit system
+requires a 64 bit system AND COMPILER!!
 
 
 # Functions
