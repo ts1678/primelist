@@ -20,7 +20,7 @@ uint64_t mpow(unsigned __int128 base, uint64_t exponent, const uint64_t modulus)
 	        	--exponent;
 	    	} else {
 	        	base = (base * base) % modulus;
-	        	exponent /= 2;
+	        	exponent >>= 1;
 	    	}
 	}
 
@@ -60,7 +60,7 @@ _Bool millerRabin(const uint64_t n) {
     uint8_t s = 0;
 
     while (d % 2 == 0) {
-        d /= 2;
+        d >>= 1;
         ++s;
     }
 
@@ -146,3 +146,4 @@ int main() {
     //printf("%" PRIu64 "\n", performanceTest(10000000));
 
 }
+
